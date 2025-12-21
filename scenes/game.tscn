@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwogwhnf3rkyi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8cj0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwrxv"]
+albedo_color = Color(0.7151145, 0.713176, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yqjtg"]
+material = SubResource("StandardMaterial3D_uwrxv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnu2h"]
+albedo_color = Color(0.4261402, 0.68002844, 0.90047437, 1)
+
+[node name="game" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0.4734305, 0)
+mesh = SubResource("SphereMesh_8cj0n")
+
+[node name="v1" type="MeshInstance3D" parent="."]
+transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0, 0, 0)
+mesh = SubResource("BoxMesh_yqjtg")
+
+[node name="v2" type="CSGBox3D" parent="."]
+transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0, 0, -25.145546)
+material = SubResource("StandardMaterial3D_lnu2h")
+
+[node name="MeshInstance3D3" type="CSGBox3D" parent="v2"]
+transform = Transform3D(-0.87619495, 0, -0.48195124, 0, 1, 0, 0.48195222, 0, -0.8761951, -0.5266563, 129.80183, 0.47650182)
+operation = 2
+size = Vector3(0.05517578, 290.4878, 0.115112305)
+
+[node name="MeshInstance3D6" type="CSGBox3D" parent="v2"]
+transform = Transform3D(-0.6375039, 0, 0.7704444, 0, 1, 0, -0.77044386, 0, -0.6375029, 0.4987823, 129.80183, 0.5057616)
+operation = 2
+size = Vector3(0.05517578, 290.4878, 0.115112305)
+
+[node name="MeshInstance3D4" type="CSGBox3D" parent="v2"]
+transform = Transform3D(0.6973769, 0, -0.7167017, 0, 1, 0, 0.7167014, 0, 0.69737595, -0.50874007, 129.80188, -0.5129636)
+operation = 2
+size = Vector3(0.05517578, 290.4878, 0.115112305)
+
+[node name="MeshInstance3D5" type="CSGBox3D" parent="v2"]
+transform = Transform3D(0.5407522, 0, 0.8411784, 0, 1, 0, -0.8411792, 0, 0.54075277, 0.4778466, 129.80188, -0.5242653)
+operation = 2
+size = Vector3(0.05517578, 290.4878, 0.115112305)
