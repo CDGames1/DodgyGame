@@ -52,5 +52,5 @@ size = Vector3(0.05517578, 290.4878, 0.115112305)
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01636839, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.07530942, 0, 0.99716026, 0, 1, 0, -0.99716026, 0, -0.075309426, 5.3320265, 3.3146996, 0)
+[node name="Camera3D" type="Camera3D" parent="Player" groups=["Camera"]]
+transform = Transform3D(0.9974333, 0, 0.07160188, -0.02294702, 0.947255, 0.3196582, -0.067825235, -0.32048073, 0.94482374, 0.29620647, 3.331068, 3.9831374)
