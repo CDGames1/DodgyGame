@@ -5,6 +5,38 @@
 [ext_resource type="Texture2D" uid="uid://tqbe5tvifec6" path="res://texture/Orange/texture_02.png" id="3_3li8b"]
 
 [sub_resource type="GDScript" id="GDScript_3li8b"]
+script/source = "extends CharacterBody3D
+
+var speed: float = 12.0
+var gravity: float = 9.8
+var jump_force: float = 10.0
+var rotation_speed: float = 9.0
+
+@onready var mesh = $VaratiationinShape/variation1 # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
+
+func _physics_process(delta):
+	var direction: Vector3 = Vector3.ZERO
+	if Input.is_action_pressed(\"move_right\"):
+		mesh.rotate_z(deg_to_rad(-rotation_speed)) # here is where the player will move on the Z Axis And by rotating by the speed of which the Variation is at the start of the script. It will transfer Degress into Radius is what we need since it is a Sphere
+	elif Input.is_action_pressed(\"move_left\"):
+		mesh.rotate_z(deg_to_rad(rotation_speed)) # Same as the move_right but the player will move left and rather than moving in + direction like the right is, instead left will go into the - values to signal the oppsosite direction
+	elif Input.is_action_pressed(\"move_up\"):
+		direction -= transform.basis.z
+		mesh.rotate_x(deg_to_rad(rotation_speed))
+	elif Input.is_action_pressed(\"move_down\"):
+		direction -= -transform.basis.z
+		mesh.rotate_x(deg_to_rad(-rotation_speed))
+	
+	direction = direction.normalized()
+	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed
+	
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y = 0
+	move_and_slide()
+"
 
 [sub_resource type="SphereShape3D" id="1"]
 
