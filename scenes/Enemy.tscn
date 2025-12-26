@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjnvoukof8bxc"]
+
+[ext_resource type="Texture2D" uid="uid://vknqjt3jr8i5" path="res://assets/texture_08_remaster.png" id="1_55jtl"]
+[ext_resource type="Texture2D" uid="uid://beu1b8k2ow84p" path="res://assets/basketball-football-ball-texture-pattern-seamless-black-white-69757120.jpg" id="2_mpr68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qkhh"]
+albedo_color = Color(0.54509807, 0.043137256, 0.78039217, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3gvst"]
+material = SubResource("StandardMaterial3D_2qkhh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ft8do"]
+albedo_color = Color(0.46521342, 0.4601145, 1.3167266, 1)
+albedo_texture = ExtResource("1_55jtl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_55jtl"]
+material = SubResource("StandardMaterial3D_ft8do")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55jtl"]
+albedo_color = Color(2.0990028, 0.29725564, 2.9435718, 1)
+albedo_texture = ExtResource("2_mpr68")
+uv1_scale = Vector3(-0.255, -0.255, -0.255)
+uv1_offset = Vector3(2.055, -0.195, 0.58)
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_mpr68"]
+material = SubResource("StandardMaterial3D_55jtl")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_55jtl"]
+
+[node name="Enemy" type="Area3D"]
+
+[node name="Colour" type="Node3D" parent="."]
+
+[node name="Variation1Colour" type="MeshInstance3D" parent="Colour"]
+mesh = SubResource("SphereMesh_3gvst")
+skeleton = NodePath("../..")
+
+[node name="Variation2Colour" type="MeshInstance3D" parent="Colour"]
+visible = false
+mesh = SubResource("SphereMesh_55jtl")
+skeleton = NodePath("../..")
+
+[node name="Texture" type="Node3D" parent="."]
+
+[node name="Variation1Texture" type="MeshInstance3D" parent="Texture"]
+visible = false
+mesh = SubResource("SphereMesh_mpr68")
+skeleton = NodePath("../..")
+
+[node name="Variation2Texture" type="MeshInstance3D" parent="Texture"]
+visible = false
+mesh = SubResource("SphereMesh_55jtl")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_55jtl")

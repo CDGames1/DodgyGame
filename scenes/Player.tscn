@@ -7,7 +7,7 @@
 [sub_resource type="GDScript" id="GDScript_3li8b"]
 script/source = "extends CharacterBody3D
 
-var speed: float = 12.0
+var speed: float = 6.0
 var jump_force: float = 10.0
 var rotation_speed: float = 9.0
 
@@ -43,6 +43,12 @@ func _physics_process(delta):
 	else:
 		velocity.y = 0
 	move_and_slide()
+
+
+func _on_enemy_body_entered(body):
+	if body.name == \"Player\":
+		print(\"Player dead\")
+		get_tree().change_scene_to_file(\"res://scenes/You Lose.tscn\")
 "
 
 [sub_resource type="SphereShape3D" id="1"]
