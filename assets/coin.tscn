@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://qwvymfat11an"]
+
+[ext_resource type="Script" uid="uid://db2ke6wr06vyl" path="res://scripts/coin.gd" id="1_pivsm"]
+[ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="1_y70ne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pivsm"]
+albedo_texture = ExtResource("1_y70ne")
+uv1_scale = Vector3(0.86, 0.94, 0.94)
+uv1_offset = Vector3(0.475, 2.65, -0.5)
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q4kta"]
+material = SubResource("StandardMaterial3D_pivsm")
+
+[node name="Coin" type="Area3D"]
+script = ExtResource("1_pivsm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.7617789e-05, -0.9999998, 0, 0.047952227, -0.00057594373, 0, 0.29567298, 0)
+mesh = SubResource("CylinderMesh_q4kta")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.99992037, 0.00060507836, -7.2674643e-06, -0.26314428, -0.9999197, 0.024020601, 7.2674643e-06, 5.5233373e-05, 0.99999934, -0.00090658665, -0.10146237, 2.8014183e-06)
+mesh = SubResource("CylinderMesh_q4kta")
+skeleton = NodePath("../..")
