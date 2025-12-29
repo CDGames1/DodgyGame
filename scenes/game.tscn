@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwogwhnf3rkyi"]
+[gd_scene load_steps=21 format=3 uid="uid://dwogwhnf3rkyi"]
 
 [ext_resource type="PackedScene" uid="uid://cql14krt0ev2i" path="res://scenes/Player.tscn" id="1_uwrxv"]
 [ext_resource type="MeshLibrary" uid="uid://bcqv6vrtjpj2w" path="res://assets/blocks.tres" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bjnvoukof8bxc" path="res://scenes/Enemy.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://qwvymfat11an" path="res://assets/coin.tscn" id="4_lbhrr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwrxv"]
 albedo_color = Color(0.7151145, 0.713176, 0, 1)
@@ -223,6 +224,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_0tnpc")
 }
 autoplay = "Anim3"
+
+[node name="Coin" type="Node3D" parent="."]
+
+[node name="Coin" parent="Coin" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -0.6702515)
+
+[node name="Coin2" parent="Coin" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -2.5863914, 0.31327915, -0.6702515)
+
+[node name="Coin3" parent="Coin" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
+
+[node name="Coin4" parent="Coin" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
 
 [connection signal="body_entered" from="Enemies/Enemy1" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy2" to="Player" method="_on_enemy_body_entered"]

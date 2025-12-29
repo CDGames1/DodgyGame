@@ -14,6 +14,10 @@ config/name="Dodgy"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [global_group]
 
 Camera=""
