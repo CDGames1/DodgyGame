@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm066k3gyk5bj"]
+[gd_scene load_steps=3 format=3 uid="uid://bm066k3gyk5bj"]
 
-[ext_resource type="FontFile" uid="uid://bquims7krgppj" path="res://assets/Kids Avenue.ttf" id="1_mhwrg"]
-[ext_resource type="FontFile" uid="uid://c6vqnm4x4vhin" path="res://assets/Kids Avenue.otf" id="2_2kr1n"]
+[ext_resource type="Script" uid="uid://cy3n04hl6av40" path="res://scenes/you_lose.gd" id="1_xd65x"]
 [ext_resource type="FontFile" uid="uid://dqvpbvxs6mxxv" path="res://assets/Lost Tumbler.ttf" id="3_cghgc"]
 
 [node name="YouLose" type="Control"]
@@ -11,56 +10,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xd65x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1220.0
 offset_bottom = 781.0
-color = Color(0.8666667, 0, 0.24705882, 1)
+color = Color(0.8392157, 0.20392157, 0, 1)
 
-[node name="Variation1" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Variation1"]
-layout_mode = 0
-offset_left = 473.99997
-offset_top = 146.0
-offset_right = 1620.0
-offset_bottom = 434.0
-scale = Vector2(0.285, 0.285)
-theme_override_fonts/font = ExtResource("1_mhwrg")
-theme_override_font_sizes/font_size = 226
-text = "You Lose"
-
-[node name="Retry" type="Button" parent="Variation1"]
-layout_mode = 0
-offset_left = 438.0
-offset_top = 284.0
-offset_right = 698.0
-offset_bottom = 385.0
-theme_override_fonts/font = ExtResource("2_2kr1n")
-theme_override_font_sizes/font_size = 31
-text = "Retry"
-
-[node name="MainMenu" type="Button" parent="Variation1"]
-layout_mode = 0
-offset_left = 441.0
-offset_top = 423.0
-offset_right = 701.0
-offset_bottom = 524.0
-theme_override_fonts/font = ExtResource("1_mhwrg")
-theme_override_font_sizes/font_size = 31
-text = "Main Menu"
-
-[node name="Variation2" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Variation2"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 180.99998
@@ -71,7 +29,7 @@ theme_override_fonts/font = ExtResource("3_cghgc")
 theme_override_font_sizes/font_size = 226
 text = "You Lose"
 
-[node name="Retry" type="Button" parent="Variation2"]
+[node name="Retry" type="Button" parent="."]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 376.0
@@ -80,7 +38,7 @@ offset_bottom = 477.0
 theme_override_fonts/font = ExtResource("3_cghgc")
 text = "Retry"
 
-[node name="MainMenu" type="Button" parent="Variation2"]
+[node name="MainMenu" type="Button" parent="."]
 layout_mode = 0
 offset_left = 709.0
 offset_top = 373.0
@@ -88,3 +46,6 @@ offset_right = 969.0
 offset_bottom = 474.0
 theme_override_fonts/font = ExtResource("3_cghgc")
 text = "Main Menu"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

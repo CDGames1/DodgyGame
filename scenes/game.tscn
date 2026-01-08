@@ -25,7 +25,6 @@ sky_material = SubResource("ProceduralSkyMaterial_yqjtg")
 
 [sub_resource type="Environment" id="Environment_lbhrr"]
 background_mode = 2
-background_energy_multiplier = 1.97
 sky = SubResource("Sky_lnu2h")
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
@@ -159,26 +158,6 @@ shape = SubResource("ConcavePolygonShape3D_uwrxv")
 [node name="v2" type="CSGBox3D" parent="."]
 transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0, 0, -0.19818497)
 material = SubResource("StandardMaterial3D_lnu2h")
-
-[node name="MeshInstance3D3" type="CSGBox3D" parent="v2"]
-transform = Transform3D(-0.87619495, 0, -0.48195124, 0, 1, 0, 0.48195222, 0, -0.8761951, -0.5266563, 129.80183, 0.47650182)
-operation = 2
-size = Vector3(0.05517578, 290.4878, 0.115112305)
-
-[node name="MeshInstance3D6" type="CSGBox3D" parent="v2"]
-transform = Transform3D(-0.6375039, 0, 0.7704444, 0, 1, 0, -0.77044386, 0, -0.6375029, 0.4987823, 129.80183, 0.5057616)
-operation = 2
-size = Vector3(0.05517578, 290.4878, 0.115112305)
-
-[node name="MeshInstance3D4" type="CSGBox3D" parent="v2"]
-transform = Transform3D(0.6973769, 0, -0.7167017, 0, 1, 0, 0.7167014, 0, 0.69737595, -0.50874007, 129.80188, -0.5129636)
-operation = 2
-size = Vector3(0.05517578, 290.4878, 0.115112305)
-
-[node name="MeshInstance3D5" type="CSGBox3D" parent="v2"]
-transform = Transform3D(0.5407522, 0, 0.8411784, 0, 1, 0, -0.8411792, 0, 0.54075277, 0.4778466, 129.80188, -0.5242653)
-operation = 2
-size = Vector3(0.05517578, 290.4878, 0.115112305)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 0, -0.44303995, 1.9208126)

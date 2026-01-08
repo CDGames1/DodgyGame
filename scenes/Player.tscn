@@ -1,8 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://cql14krt0ev2i"]
+[gd_scene load_steps=9 format=3 uid="uid://cql14krt0ev2i"]
 
-[ext_resource type="Texture2D" uid="uid://cr62c7t5ps1e3" path="res://texture/Green/texture_04.png" id="1_p0vlq"]
 [ext_resource type="Texture2D" uid="uid://dyy6anhlr4m4h" path="res://texture/Green/texture_09.png" id="2_v6fml"]
-[ext_resource type="Texture2D" uid="uid://tqbe5tvifec6" path="res://texture/Orange/texture_02.png" id="3_3li8b"]
 [ext_resource type="Script" uid="uid://bcfr2v52hm2ft" path="res://scripts/hud.gd" id="4_70d11"]
 [ext_resource type="FontFile" uid="uid://dqvpbvxs6mxxv" path="res://assets/Lost Tumbler.ttf" id="4_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="5_70d11"]
@@ -16,7 +14,7 @@ var rotation_speed: float = 9.0
 
 var camera_node_name = \"\"
 @onready var camera = camera_node_name
-@onready var mesh = $VaratiationinShape/variation1 # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
+@onready var mesh = $PlayerMesh # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
 
 func _physics_process(delta):
 	if get_tree().get_nodes_in_group(\"Camera\"):
@@ -56,41 +54,12 @@ func _on_enemy_body_entered(body):
 
 [sub_resource type="SphereShape3D" id="1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdl7e"]
-albedo_color = Color(0.5450955, 0.003844877, 0.9653384, 1)
-albedo_texture = ExtResource("1_p0vlq")
-
-[sub_resource type="SphereMesh" id="2"]
-material = SubResource("StandardMaterial3D_mdl7e")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu4a1"]
-albedo_color = Color(1, 0.45882353, 0.8, 1)
+albedo_color = Color(0.5450955, 0.003844877, 0.9653384, 1)
 albedo_texture = ExtResource("2_v6fml")
 
 [sub_resource type="SphereMesh" id="SphereMesh_70d11"]
 material = SubResource("StandardMaterial3D_qu4a1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw2d6"]
-albedo_color = Color(0.17475834, 0.7379833, 0.3808411, 1)
-albedo_texture = ExtResource("2_v6fml")
-uv1_triplanar = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_khinc"]
-material = SubResource("StandardMaterial3D_cw2d6")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bruh7"]
-albedo_color = Color(0.35912004, 0.3267192, 0.16885978, 1)
-albedo_texture = ExtResource("1_p0vlq")
-
-[sub_resource type="SphereMesh" id="SphereMesh_6eyey"]
-material = SubResource("StandardMaterial3D_bruh7")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70d11"]
-albedo_color = Color(1, 0.4745098, 1, 1)
-albedo_texture = ExtResource("3_3li8b")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cw2d6"]
-material = SubResource("StandardMaterial3D_70d11")
 
 [node name="Player" type="CharacterBody3D"]
 script = SubResource("GDScript_3li8b")
@@ -99,60 +68,9 @@ script = SubResource("GDScript_3li8b")
 transform = Transform3D(1.03105, 0, 0, 0, -0.0121106, 1.03098, 0, -1.03098, -0.0121106, 0, 0.911344, 0)
 shape = SubResource("1")
 
-[node name="VariationinTexture" type="Node3D" parent="."]
-visible = false
-
-[node name="variation1" type="MeshInstance3D" parent="VariationinTexture"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
-mesh = SubResource("2")
-skeleton = NodePath("../..")
-
-[node name="variation2" type="MeshInstance3D" parent="VariationinTexture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
 mesh = SubResource("SphereMesh_70d11")
-skeleton = NodePath("../..")
-
-[node name="variation3" type="MeshInstance3D" parent="VariationinTexture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
-mesh = SubResource("SphereMesh_khinc")
-skeleton = NodePath("../..")
-
-[node name="VaratiationinColour" type="Node3D" parent="."]
-visible = false
-
-[node name="variation1" type="MeshInstance3D" parent="VaratiationinColour"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
-mesh = SubResource("2")
-skeleton = NodePath("../..")
-
-[node name="variation2" type="MeshInstance3D" parent="VaratiationinColour"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
-mesh = SubResource("SphereMesh_6eyey")
-skeleton = NodePath("../..")
-
-[node name="variation3" type="MeshInstance3D" parent="VaratiationinColour"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-visible = false
-mesh = SubResource("SphereMesh_70d11")
-skeleton = NodePath("../..")
-
-[node name="VaratiationinShape" type="Node3D" parent="."]
-
-[node name="variation1" type="MeshInstance3D" parent="VaratiationinShape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
-mesh = SubResource("2")
-skeleton = NodePath("../..")
-
-[node name="variation2" type="MeshInstance3D" parent="VaratiationinShape"]
-transform = Transform3D(1, 0, 0, 0, 0.5053991, 0, 0, 0, 1, -1.4978408, 0.911344, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_cw2d6")
-skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.71354395, 0.70061046, 0, -0.70061046, -0.71354395, 0, 2.2819524, 0.394194)
