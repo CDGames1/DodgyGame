@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkq1vrdlhfmwy"
 path.s3tc="res://.godot/imported/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png-b91628c6eaffd4c776c0c9067b7102df.s3tc.ctex"
+path.etc2="res://.godot/imported/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png-b91628c6eaffd4c776c0c9067b7102df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png"
-dest_files=["res://.godot/imported/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png-b91628c6eaffd4c776c0c9067b7102df.s3tc.ctex"]
+dest_files=["res://.godot/imported/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png-b91628c6eaffd4c776c0c9067b7102df.s3tc.ctex", "res://.godot/imported/basketball-football-ball-texture-pattern-seamless-black-white-69757120.png-b91628c6eaffd4c776c0c9067b7102df.etc2.ctex"]
 
 [params]
 

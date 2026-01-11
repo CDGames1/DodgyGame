@@ -5,8 +5,10 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cntrl"]
 albedo_color = Color(0.9117319, 0.6664965, 3.85046e-07, 1)
 albedo_texture = ExtResource("1_bq76s")
-uv1_scale = Vector3(0.38, 0.38, 0.38)
+uv1_scale = Vector3(0.445, 0.445, 0.445)
+uv1_offset = Vector3(0.425, 0, 0.94)
 uv1_triplanar = true
+uv1_world_triplanar = true
 grow_amount = 1.798
 
 [sub_resource type="BoxMesh" id="BoxMesh_bq76s"]

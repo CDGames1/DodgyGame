@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cql14krt0ev2i"]
+[gd_scene load_steps=10 format=3 uid="uid://cql14krt0ev2i"]
 
 [ext_resource type="Texture2D" uid="uid://dyy6anhlr4m4h" path="res://texture/Green/texture_09.png" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://bcfr2v52hm2ft" path="res://scripts/hud.gd" id="4_70d11"]
 [ext_resource type="FontFile" uid="uid://dqvpbvxs6mxxv" path="res://assets/Lost Tumbler.ttf" id="4_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="5_70d11"]
+[ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://addons/joystick_addon/joystick.tscn" id="5_qu4a1"]
 
 [sub_resource type="GDScript" id="GDScript_3li8b"]
 script/source = "extends CharacterBody3D
@@ -17,6 +18,18 @@ var camera_node_name = \"\"
 @onready var mesh = $PlayerMesh # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
 
 func _physics_process(delta):
+	if Global.mobile == true:
+		$Joystick.show()
+		$Joystick.up_input = \"move_up\"
+		$Joystick.down_input = \"move_down\"
+		$Joystick.left_input = \"move_left\"
+		$Joystick.right_input = \"move_right\"
+	elif Global.mobile == false:
+		$Joystick.hide()
+		$Joystick.up_input = \"\"
+		$Joystick.down_input = \"\"
+		$Joystick.left_input = \"\"
+		$Joystick.right_input = \"\"
 	if get_tree().get_nodes_in_group(\"Camera\"):
 		pass
 	var direction: Vector3 = Vector3.ZERO
@@ -55,8 +68,13 @@ func _on_enemy_body_entered(body):
 [sub_resource type="SphereShape3D" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu4a1"]
-albedo_color = Color(0.5450955, 0.003844877, 0.9653384, 1)
+albedo_color = Color(0.3462963, 0.5477004, 0.99994344, 1)
 albedo_texture = ExtResource("2_v6fml")
+uv1_scale = Vector3(9.76, 9.76, 9.76)
+uv1_offset = Vector3(0, 0, 0.31)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 13.454331
+uv1_world_triplanar = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_70d11"]
 material = SubResource("StandardMaterial3D_qu4a1")
@@ -71,22 +89,6 @@ shape = SubResource("1")
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
 mesh = SubResource("SphereMesh_70d11")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.71354395, 0.70061046, 0, -0.70061046, -0.71354395, 0, 2.2819524, 0.394194)
-light_energy = 4.464
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0187262, -0.99982464, 0, 0.99982464, 0.0187262, 0, -0.08170509, 0.394194)
-light_energy = 4.464
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.9994456, 0.033294775, 0, -0.033294775, -0.9994456, 0, 0.68610096, -1.7054495)
-light_energy = 4.464
-
-[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99774563, 0.06710975, 0, -0.06710975, 0.99774563, 0, 0.68610096, 1.7059888)
-light_energy = 4.464
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -112,3 +114,6 @@ text = "0"
 position = Vector2(925.00006, 44.000004)
 scale = Vector2(0.3561947, 0.35619473)
 texture = ExtResource("5_70d11")
+
+[node name="Joystick" parent="." instance=ExtResource("5_qu4a1")]
+position = Vector2(151, 462)
