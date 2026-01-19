@@ -2,13 +2,9 @@ extends Node2D
 
 @onready var touch:TouchScreenButton = %TouchBtn
 @onready var init_pos:Marker2D = %InitPos
-##Action for up direction.
 @export var up_input:String = "move_up"
-##Action for down direction.
 @export var down_input:String = "move_down"
-##Action for left direction.
 @export var left_input:String = "move_left"
-##Action for right direction.
 @export var right_input:String = "move_right"
 var radius = 40
 
