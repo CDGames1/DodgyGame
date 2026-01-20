@@ -12,7 +12,6 @@ script/source = "extends CharacterBody3D
 var speed: float = 6.0
 var jump_force: float = 10.0
 var rotation_speed: float = 9.0
-
 var camera_node_name = \"\"
 @onready var camera = camera_node_name
 @onready var mesh = $PlayerMesh # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
@@ -24,12 +23,11 @@ func _physics_process(delta):
 		$Joystick.down_input = \"move_down\"
 		$Joystick.left_input = \"move_left\"
 		$Joystick.right_input = \"move_right\"
+		Global.mobile_disabled = false
 	elif Global.mobile == false:
 		$Joystick.hide()
-		$Joystick.up_input = \"\"
-		$Joystick.down_input = \"\"
-		$Joystick.left_input = \"\"
-		$Joystick.right_input = \"\"
+		Global.mobile_disabled = true
+		
 	if get_tree().get_nodes_in_group(\"Camera\"):
 		pass
 	var direction: Vector3 = Vector3.ZERO
@@ -61,7 +59,10 @@ func _physics_process(delta):
 
 func _on_enemy_body_entered(body):
 	if body.name == \"Player\":
+		$HitHurt.play()
 		print(\"Player dead\")
+		if Global.coin_counter >= Global.highscore:
+			Global.highscore = Global.coin_counter
 		get_tree().change_scene_to_file(\"res://scenes/You Lose.tscn\")
 "
 

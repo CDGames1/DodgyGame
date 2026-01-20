@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://qwvymfat11an"]
+[gd_scene load_steps=11 format=3 uid="uid://qwvymfat11an"]
 
 [ext_resource type="Script" uid="uid://db2ke6wr06vyl" path="res://scripts/coin.gd" id="1_pivsm"]
 [ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="1_y70ne"]
+[ext_resource type="AudioStream" uid="uid://de4qxmq1jgihh" path="res://assets/audio/pickupCoin.wav" id="3_klnt7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pivsm"]
 albedo_texture = ExtResource("1_y70ne")
@@ -84,6 +85,9 @@ radius = 0.5410156
 
 [node name="Coin" type="Area3D"]
 script = ExtResource("1_pivsm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_klnt7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.99999994, 0, 0, 0, -2.0960587e-09, -0.99999994, 0, 0.047952235, -4.3711385e-08, 0, 0.29567298, 0)

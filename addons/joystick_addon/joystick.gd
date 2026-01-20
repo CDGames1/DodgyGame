@@ -20,15 +20,16 @@ func _draw() -> void:
 	draw_arc(touch.position, 60, start_angle, end_angle, 120, Color.STEEL_BLUE, width, true)
 
 func _input(event):
-	if event is InputEventScreenTouch:
-		if event.pressed:
+	if Global.mobile_disabled == false:
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				_process_touch(event.position)
+			else:
+				reset_dir()
+				touch.global_position = init_pos.global_position
+				queue_redraw()
+		elif event is InputEventScreenDrag:
 			_process_touch(event.position)
-		else:
-			reset_dir()
-			touch.global_position = init_pos.global_position
-			queue_redraw()
-	elif event is InputEventScreenDrag:
-		_process_touch(event.position)
 
 func _process_touch(touch_pos: Vector2):
 	queue_redraw()
