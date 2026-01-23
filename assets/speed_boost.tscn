@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://bui4rl6yi8opr"]
+
+[ext_resource type="Script" uid="uid://bl2tkglg3bbm5" path="res://scripts/speed_boost.gd" id="1_6krn2"]
+[ext_resource type="AudioStream" uid="uid://nellq3m687yd" path="res://assets/audio/powerUp.wav" id="2_di3jq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6krn2"]
+albedo_color = Color(0.30588236, 1, 0.41568628, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hvvrh"]
+material = SubResource("StandardMaterial3D_6krn2")
+
+[sub_resource type="Animation" id="Animation_klnt7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.29567298, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pivsm"]
+resource_name = "Rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0), Vector3(1.5707964, -1.5686495, 0), Vector3(1.5707964, -3.1101768, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vnkb4"]
+resource_name = "bounce"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.29567298, 0), Vector3(0, 1.428416, 0), Vector3(0, 0.29567298, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6krn2"]
+resource_name = "bounce_auto"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.29567298, 0), Vector3(0, 0.4, 0), Vector3(0, 0.29567298, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnkb4"]
+_data = {
+&"RESET": SubResource("Animation_klnt7"),
+&"Rotate": SubResource("Animation_pivsm"),
+&"bounce": SubResource("Animation_vnkb4"),
+&"bounce_auto": SubResource("Animation_6krn2")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pivsm"]
+height = 0.16734314
+radius = 0.13476563
+
+[node name="Speed Boost" type="Area3D"]
+script = ExtResource("1_6krn2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_di3jq")
+bus = &"SFX"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.21084613, 0, 0, 0, -9.216377e-09, -0.21084613, 0, 0.21084613, -9.216377e-09, 0, 0.29567298, 0)
+mesh = SubResource("SphereMesh_hvvrh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.33199564, 0, 0, 0, 0.4742795, 8.881784e-16, 0, -1.7763568e-15, 0.21342579, 0, 0.0711419, -0.49954438)
+mesh = SubResource("SphereMesh_hvvrh")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vnkb4")
+}
+autoplay = "bounce_auto"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.010524122, -0.9999446, 0, 0.9999446, -0.010524122, -0.015919179, 0.27987507, -0.0006942367)
+shape = SubResource("CylinderShape3D_pivsm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

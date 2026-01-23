@@ -1,23 +1,32 @@
-[gd_scene load_steps=26 format=3 uid="uid://dwogwhnf3rkyi"]
+[gd_scene load_steps=32 format=3 uid="uid://dwogwhnf3rkyi"]
 
 [ext_resource type="Script" uid="uid://8tdouxuryasp" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cql14krt0ev2i" path="res://scenes/Player.tscn" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://bawcchke0m7jr" path="res://assets/audio/GameplayMusic.mp3" id="2_gee14"]
 [ext_resource type="MeshLibrary" uid="uid://bcqv6vrtjpj2w" path="res://assets/blocks.tres" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bjnvoukof8bxc" path="res://scenes/Enemy.tscn" id="3_lnu2h"]
 [ext_resource type="AudioStream" uid="uid://bpp6yqicci0ou" path="res://assets/audio/hitHurt.wav" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://qwvymfat11an" path="res://assets/coin.tscn" id="4_lbhrr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwrxv"]
-albedo_color = Color(0.7151145, 0.713176, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yqjtg"]
-material = SubResource("StandardMaterial3D_uwrxv")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uwrxv"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[ext_resource type="PackedScene" uid="uid://bui4rl6yi8opr" path="res://assets/speed_boost.tscn" id="7_u5sy4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnu2h"]
 albedo_color = Color(0.4261402, 0.68002844, 0.90047437, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iywne"]
+sky_top_color = Color(0.49943924, 0.4508528, 0.20908442, 1)
+sky_horizon_color = Color(0.9850469, 0.45904088, 0.57020336, 1)
+ground_bottom_color = Color(1.2032687e-07, 0.18593007, 0.3025992, 1)
+ground_horizon_color = Color(0.4857828, 0.4940496, 0.51059407, 1)
+
+[sub_resource type="Sky" id="Sky_p57ef"]
+sky_material = SubResource("ProceduralSkyMaterial_iywne")
+
+[sub_resource type="Environment" id="Environment_u5sy4"]
+background_mode = 2
+background_energy_multiplier = 1.83
+sky = SubResource("Sky_p57ef")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.26
 
 [sub_resource type="Animation" id="Animation_lnu2h"]
 resource_name = "Anim1"
@@ -172,34 +181,283 @@ _data = {
 &"RESET": SubResource("Animation_vtaks")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iywne"]
-sky_top_color = Color(0.49943924, 0.4508528, 0.20908442, 1)
-sky_horizon_color = Color(0.9850469, 0.45904088, 0.57020336, 1)
-ground_bottom_color = Color(1.2032687e-07, 0.18593007, 0.3025992, 1)
-ground_horizon_color = Color(0.4857828, 0.4940496, 0.51059407, 1)
+[sub_resource type="Animation" id="Animation_kvpfn"]
+resource_name = "Wave2Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 9.638604, 0), Vector3(0, -0.14346218, 0)]
+}
 
-[sub_resource type="Sky" id="Sky_p57ef"]
-sky_material = SubResource("ProceduralSkyMaterial_iywne")
+[sub_resource type="Animation" id="Animation_dinhu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 9.638604, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wave3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wave3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 8.835264, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wave4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wave4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.36358705, 11.776955, -0.0050325408)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wave5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.36358705, 11.855336, -0.0050325408)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Wave5:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Wave6:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.36358705, 13.852223, -0.0050325408)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Wave6:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="Environment" id="Environment_u5sy4"]
-background_mode = 2
-background_energy_multiplier = 1.83
-sky = SubResource("Sky_p57ef")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.26
+[sub_resource type="Animation" id="Animation_kvuet"]
+resource_name = "Wave3Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 8.835264, 0), Vector3(0, -0.14541245, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_trtic"]
+resource_name = "Wave4Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.36358705, 11.776955, -0.0050325408), Vector3(-0.36358705, -0.15131283, -0.0050325408)]
+}
+
+[sub_resource type="Animation" id="Animation_ir15t"]
+resource_name = "Wave5Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.36358705, 11.855336, -0.0050325408), Vector3(-0.36358705, -0.1621821, -0.0050325408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave5:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ca42v"]
+resource_name = "Wave6Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave6:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.36358705, 13.852223, -0.0050325408), Vector3(-0.36358705, -0.2259028, -0.0050325408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave6:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvuet"]
+_data = {
+&"RESET": SubResource("Animation_dinhu"),
+&"Wave2Start": SubResource("Animation_kvpfn"),
+&"Wave3Start": SubResource("Animation_kvuet"),
+&"Wave4Start": SubResource("Animation_trtic"),
+&"Wave5Start": SubResource("Animation_ir15t"),
+&"Wave6Start": SubResource("Animation_ca42v")
+}
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_iywne")
 
-[node name="v1" type="MeshInstance3D" parent="."]
-transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_yqjtg")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="v1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="v1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_uwrxv")
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gee14")
+pitch_scale = 1.04
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="v2" type="CSGBox3D" parent="."]
 transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0.1734438, 0, -3.20131)
@@ -215,13 +473,12 @@ stream = ExtResource("3_p57ef")
 [node name="Camera3D" type="Camera3D" parent="Player" groups=["Camera"]]
 transform = Transform3D(0.9974333, 0, 0.07160188, -0.02294702, 0.947255, 0.3196582, -0.067825235, -0.32048073, 0.94482374, 0.29620647, 3.331068, 3.9831374)
 
-[node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
-mesh_library = ExtResource("2_yqjtg")
-cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(10, 65520, 262144, 65526, 65520, 1441792, 65527, 65520, 1441792, 65528, 65520, 1441792, 65529, 65520, 1441792, 65530, 65520, 1441792, 65531, 65520, 1441792, 65532, 65520, 1441792, 65533, 65520, 1441792, 65534, 65520, 1441792, 65535, 65520, 1441792, 0, 65520, 1441792, 1, 65520, 1441792, 2, 65520, 1441792, 3, 65520, 1441792, 4, 65520, 1441792, 5, 65520, 1441792, 6, 65520, 1441792, 7, 65520, 1441792, 8, 65520, 1441792, 9, 65520, 1441792, 65531, 65502, 1441793, 65531, 65503, 1441793, 65531, 65504, 1441793, 65531, 65505, 1441793, 65531, 65506, 1441793, 65530, 65506, 1441793, 65529, 65506, 1441793, 65531, 65519, 1441793, 65531, 65518, 1441793, 65531, 65517, 1441793, 65531, 65516, 1441793, 65531, 65515, 1441793, 65532, 65515, 1441793, 65533, 65515, 1441793, 65534, 65515, 1441793, 65535, 65515, 1441793, 65529, 65515, 1441793, 65530, 65515, 1441793, 0, 65507, 1441793, 1, 65507, 1441793, 2, 65507, 1441793, 3, 65507, 1441793, 4, 65507, 1441793, 5, 65507, 1441793, 5, 65506, 1441793, 5, 65505, 1441793, 5, 65504, 1441793, 5, 65503, 1441793, 0, 65508, 1441793, 0, 65509, 1441793, 0, 65510, 1441793, 7, 65512, 1441793, 8, 65512, 1441793, 9, 65512, 1441793, 4, 65519, 1441793, 4, 65518, 1441793, 4, 65517, 1441793, 7, 65511, 1441793, 4, 65516, 1441793, 4, 65515, 1441793, 65535, 65510, 1441793, 65534, 65510, 1441793, 65526, 65506, 65537, 65525, 65520, 0, 65524, 65520, 0, 65523, 65520, 0, 65522, 65520, 0, 65521, 65520, 0, 65520, 65520, 0, 65520, 65519, 0, 65520, 65518, 0, 65520, 65517, 0, 65520, 65516, 0, 65520, 65515, 0, 65520, 65514, 0, 65520, 65513, 0, 65520, 65512, 0, 65520, 65511, 0, 65520, 65510, 0, 65520, 65509, 0, 65520, 65508, 0, 65520, 65507, 0, 65520, 65506, 0, 65520, 65505, 0, 65520, 65504, 0, 65520, 65503, 0, 65520, 65502, 0, 65520, 65501, 0, 65520, 65500, 0, 65520, 65499, 0, 65520, 65498, 0, 65520, 65497, 0, 65520, 65496, 0, 65520, 65495, 0, 65521, 65495, 786432, 65522, 65495, 786432, 65523, 65495, 786432, 65524, 65495, 786432, 65525, 65495, 786432, 65526, 65495, 786432, 65527, 65495, 786432, 65528, 65495, 786432, 65529, 65495, 786432, 65530, 65495, 786432, 65531, 65495, 786432, 65532, 65495, 786432, 65533, 65495, 786432, 65534, 65495, 786432, 65535, 65495, 786432, 0, 65495, 786432, 1, 65495, 786432, 2, 65495, 786432, 3, 65495, 786432, 4, 65495, 786432, 5, 65495, 786432, 6, 65495, 786432, 7, 65495, 786432, 8, 65495, 786432, 9, 65495, 786432, 10, 65495, 786432, 11, 65495, 786432, 12, 65495, 786432, 13, 65495, 786432, 14, 65495, 786432, 15, 65495, 786432, 15, 65496, 262144, 15, 65497, 262144, 15, 65498, 262144, 15, 65499, 262144, 15, 65500, 262144, 15, 65501, 262144, 15, 65502, 262144, 15, 65503, 262144, 15, 65504, 262144, 15, 65505, 262144, 15, 65506, 262144, 15, 65507, 262144, 15, 65508, 262144, 15, 65509, 262144, 15, 65510, 262144, 15, 65511, 262144, 15, 65512, 262144, 15, 65513, 262144, 15, 65514, 262144, 15, 65515, 262144, 15, 65516, 262144, 15, 65517, 262144, 15, 65518, 262144, 15, 65519, 262144, 15, 65520, 262144, 11, 65520, 262144, 12, 65520, 262144, 13, 65520, 262144, 14, 65520, 262144, 10, 65503, 262145, 11, 65503, 262145, 12, 65503, 262145, 12, 65502, 262145, 12, 65500, 262145, 12, 65499, 262145, 12, 65501, 262145, 1, 65496, 262145, 1, 65497, 262145, 1, 65498, 262145, 1, 65499, 262145, 65521, 65498, 262145, 65522, 65498, 262145, 65523, 65498, 262145, 65524, 65498, 262145, 65525, 65498, 262145, 7, 65513, 262145, 7, 65514, 262145, 7, 65515, 262145, 10, 65512, 262145, 11, 65512, 262145, 12, 65512, 262145, 7, 65510, 262145, 65525, 65506, 458753, 65524, 65506, 458753, 65523, 65506, 458753, 65524, 65507, 458753, 65524, 65508, 458753, 65524, 65509, 458753, 65524, 65510, 458753, 65524, 65511, 458753, 65524, 65512, 458753, 65524, 65513, 458753, 65525, 65514, 458753, 65524, 65514, 458753, 65531, 65496, 458753, 65531, 65497, 458753, 7, 65496, 458753, 7, 65497, 458753, 7, 65498, 458753, 6, 65498, 458753, 5, 65498, 458753)
-}
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.96609247, 0.22561306, -0.12555422, -0.14698637, -0.08078802, 0.98583376, 0.21227372, 0.97086143, 0.11121079, 0, 3.1349182, 0)
+directional_shadow_split_2 = 0.48
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u5sy4")
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
@@ -261,57 +518,242 @@ libraries = {
 &"": SubResource("AnimationLibrary_kvpfn")
 }
 
-[node name="Coin" type="Node3D" parent="."]
+[node name="Level" type="Node3D" parent="."]
 
-[node name="Coin" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="GridMap" type="GridMap" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
+mesh_library = ExtResource("2_yqjtg")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(10, 65520, 262144, 65526, 65520, 1441792, 65527, 65520, 1441792, 65528, 65520, 1441792, 65529, 65520, 1441792, 65530, 65520, 1441792, 65531, 65520, 1441792, 65532, 65520, 1441792, 65533, 65520, 1441792, 65534, 65520, 1441792, 65535, 65520, 1441792, 0, 65520, 1441792, 1, 65520, 1441792, 2, 65520, 1441792, 3, 65520, 1441792, 4, 65520, 1441792, 5, 65520, 1441792, 6, 65520, 1441792, 7, 65520, 1441792, 8, 65520, 1441792, 9, 65520, 1441792, 65531, 65502, 1441793, 65531, 65503, 1441793, 65531, 65504, 1441793, 65531, 65505, 1441793, 65531, 65506, 1441793, 65530, 65506, 1441793, 65529, 65506, 1441793, 65531, 65519, 1441793, 65531, 65518, 1441793, 65531, 65517, 1441793, 65531, 65516, 1441793, 65531, 65515, 1441793, 65532, 65515, 1441793, 65533, 65515, 1441793, 65534, 65515, 1441793, 65535, 65515, 1441793, 65529, 65515, 1441793, 65530, 65515, 1441793, 0, 65507, 1441793, 1, 65507, 1441793, 2, 65507, 1441793, 3, 65507, 1441793, 4, 65507, 1441793, 5, 65507, 1441793, 5, 65506, 1441793, 5, 65505, 1441793, 5, 65504, 1441793, 5, 65503, 1441793, 0, 65508, 1441793, 0, 65509, 1441793, 0, 65510, 1441793, 7, 65512, 1441793, 8, 65512, 1441793, 9, 65512, 1441793, 4, 65519, 1441793, 4, 65518, 1441793, 4, 65517, 1441793, 7, 65511, 1441793, 4, 65516, 1441793, 4, 65515, 1441793, 65535, 65510, 1441793, 65534, 65510, 1441793, 65526, 65506, 65537, 65525, 65520, 0, 65524, 65520, 0, 65523, 65520, 0, 65522, 65520, 0, 65521, 65520, 0, 65520, 65520, 0, 65520, 65519, 0, 65520, 65518, 0, 65520, 65517, 0, 65520, 65516, 0, 65520, 65515, 0, 65520, 65514, 0, 65520, 65513, 0, 65520, 65512, 0, 65520, 65511, 0, 65520, 65510, 0, 65520, 65509, 0, 65520, 65508, 0, 65520, 65507, 0, 65520, 65506, 0, 65520, 65505, 0, 65520, 65504, 0, 65520, 65503, 0, 65520, 65502, 0, 65520, 65501, 0, 65520, 65500, 0, 65520, 65499, 0, 65520, 65498, 0, 65520, 65497, 0, 65520, 65496, 0, 65520, 65495, 0, 65521, 65495, 786432, 65522, 65495, 786432, 65523, 65495, 786432, 65524, 65495, 786432, 65525, 65495, 786432, 65526, 65495, 786432, 65527, 65495, 786432, 65528, 65495, 786432, 65529, 65495, 786432, 65530, 65495, 786432, 65531, 65495, 786432, 65532, 65495, 786432, 65533, 65495, 786432, 65534, 65495, 786432, 65535, 65495, 786432, 0, 65495, 786432, 1, 65495, 786432, 2, 65495, 786432, 3, 65495, 786432, 4, 65495, 786432, 5, 65495, 786432, 6, 65495, 786432, 7, 65495, 786432, 8, 65495, 786432, 9, 65495, 786432, 10, 65495, 786432, 11, 65495, 786432, 12, 65495, 786432, 13, 65495, 786432, 14, 65495, 786432, 15, 65495, 786432, 15, 65496, 262144, 15, 65497, 262144, 15, 65498, 262144, 15, 65499, 262144, 15, 65500, 262144, 15, 65501, 262144, 15, 65502, 262144, 15, 65503, 262144, 15, 65504, 262144, 15, 65505, 262144, 15, 65506, 262144, 15, 65507, 262144, 15, 65508, 262144, 15, 65509, 262144, 15, 65510, 262144, 15, 65511, 262144, 15, 65512, 262144, 15, 65513, 262144, 15, 65514, 262144, 15, 65515, 262144, 15, 65516, 262144, 15, 65517, 262144, 15, 65518, 262144, 15, 65519, 262144, 15, 65520, 262144, 11, 65520, 262144, 12, 65520, 262144, 13, 65520, 262144, 14, 65520, 262144, 10, 65503, 262145, 11, 65503, 262145, 12, 65503, 262145, 12, 65502, 262145, 12, 65500, 262145, 12, 65499, 262145, 12, 65501, 262145, 1, 65496, 262145, 1, 65497, 262145, 1, 65498, 262145, 1, 65499, 262145, 65521, 65498, 262145, 65522, 65498, 262145, 65523, 65498, 262145, 65524, 65498, 262145, 65525, 65498, 262145, 7, 65513, 262145, 7, 65514, 262145, 7, 65515, 262145, 10, 65512, 262145, 11, 65512, 262145, 12, 65512, 262145, 7, 65510, 262145, 65525, 65506, 458753, 65524, 65506, 458753, 65523, 65506, 458753, 65524, 65507, 458753, 65524, 65508, 458753, 65524, 65509, 458753, 65524, 65510, 458753, 65524, 65511, 458753, 65524, 65512, 458753, 65524, 65513, 458753, 65525, 65514, 458753, 65524, 65514, 458753, 65531, 65496, 458753, 65531, 65497, 458753, 7, 65496, 458753, 7, 65497, 458753, 7, 65498, 458753, 6, 65498, 458753, 5, 65498, 458753)
+}
+
+[node name="Coin" type="Node3D" parent="Level"]
+
+[node name="Coin" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -3.753986)
 
-[node name="Coin5" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -5.4735866, 0.31327915, -5.337288)
 
-[node name="Coin2" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -1.2642851, 0.31327915, -1.3186651)
 
-[node name="Coin6" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.2492557, 0.31327915, 5.193162)
 
-[node name="Coin7" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 8.756789, 0.31327915, 0.73210025)
 
-[node name="Coin3" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
 
-[node name="Coin4" parent="Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.34236458, 0.9395672, 0, -0.9395672, 0.34236458, 0, 3.1349182, 0)
+[node name="Speed Boost" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, 3.1251209)
+
+[node name="Speed Boost2" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, -13.521545)
+
+[node name="Speed Boost3" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -13.521545)
+
+[node name="Speed Boost4" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -6.246407)
+
+[node name="Speed Boost5" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -14.422438, -0.01085788, -6.246407)
+
+[node name="Speed Boost6" parent="Level" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -5.698257, -0.01085788, 6.6523967)
+
+[node name="Endless" type="Node3D" parent="."]
+
+[node name="Speed Boost" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, 3.1251209)
+
+[node name="Speed Boost2" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, -13.521545)
+
+[node name="Speed Boost3" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -13.521545)
+
+[node name="Speed Boost4" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -6.246407)
+
+[node name="Speed Boost5" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -14.422438, -0.01085788, -6.246407)
+
+[node name="Speed Boost6" parent="Endless" instance=ExtResource("7_u5sy4")]
+transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -5.698257, -0.01085788, 6.6523967)
+
+[node name="GridMap" type="GridMap" parent="Endless"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
+mesh_library = ExtResource("2_yqjtg")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(10, 65520, 262144, 65526, 65520, 1441792, 65527, 65520, 1441792, 65528, 65520, 1441792, 65529, 65520, 1441792, 65530, 65520, 1441792, 65531, 65520, 1441792, 65532, 65520, 1441792, 65533, 65520, 1441792, 65534, 65520, 1441792, 65535, 65520, 1441792, 0, 65520, 1441792, 1, 65520, 1441792, 2, 65520, 1441792, 3, 65520, 1441792, 4, 65520, 1441792, 5, 65520, 1441792, 6, 65520, 1441792, 7, 65520, 1441792, 8, 65520, 1441792, 9, 65520, 1441792, 65531, 65502, 1441793, 65531, 65503, 1441793, 65531, 65504, 1441793, 65531, 65505, 1441793, 65531, 65506, 1441793, 65530, 65506, 1441793, 65529, 65506, 1441793, 65531, 65519, 1441793, 65531, 65518, 1441793, 65531, 65517, 1441793, 65531, 65516, 1441793, 65531, 65515, 1441793, 65532, 65515, 1441793, 65533, 65515, 1441793, 65534, 65515, 1441793, 65535, 65515, 1441793, 65529, 65515, 1441793, 65530, 65515, 1441793, 0, 65507, 1441793, 1, 65507, 1441793, 2, 65507, 1441793, 3, 65507, 1441793, 4, 65507, 1441793, 5, 65507, 1441793, 5, 65506, 1441793, 5, 65505, 1441793, 5, 65504, 1441793, 5, 65503, 1441793, 0, 65508, 1441793, 0, 65509, 1441793, 0, 65510, 1441793, 7, 65512, 1441793, 8, 65512, 1441793, 9, 65512, 1441793, 4, 65519, 1441793, 4, 65518, 1441793, 4, 65517, 1441793, 7, 65511, 1441793, 4, 65516, 1441793, 4, 65515, 1441793, 65535, 65510, 1441793, 65534, 65510, 1441793, 65526, 65506, 65537, 65525, 65520, 0, 65524, 65520, 0, 65523, 65520, 0, 65522, 65520, 0, 65521, 65520, 0, 65520, 65520, 0, 65520, 65519, 0, 65520, 65518, 0, 65520, 65517, 0, 65520, 65516, 0, 65520, 65515, 0, 65520, 65514, 0, 65520, 65513, 0, 65520, 65512, 0, 65520, 65511, 0, 65520, 65510, 0, 65520, 65509, 0, 65520, 65508, 0, 65520, 65507, 0, 65520, 65506, 0, 65520, 65505, 0, 65520, 65504, 0, 65520, 65503, 0, 65520, 65502, 0, 65520, 65501, 0, 65520, 65500, 0, 65520, 65499, 0, 65520, 65498, 0, 65520, 65497, 0, 65520, 65496, 0, 65520, 65495, 0, 65521, 65495, 786432, 65522, 65495, 786432, 65523, 65495, 786432, 65524, 65495, 786432, 65525, 65495, 786432, 65526, 65495, 786432, 65527, 65495, 786432, 65528, 65495, 786432, 65529, 65495, 786432, 65530, 65495, 786432, 65531, 65495, 786432, 65532, 65495, 786432, 65533, 65495, 786432, 65534, 65495, 786432, 65535, 65495, 786432, 0, 65495, 786432, 1, 65495, 786432, 2, 65495, 786432, 3, 65495, 786432, 4, 65495, 786432, 5, 65495, 786432, 6, 65495, 786432, 7, 65495, 786432, 8, 65495, 786432, 9, 65495, 786432, 10, 65495, 786432, 11, 65495, 786432, 12, 65495, 786432, 13, 65495, 786432, 14, 65495, 786432, 15, 65495, 786432, 15, 65496, 262144, 15, 65497, 262144, 15, 65498, 262144, 15, 65499, 262144, 15, 65500, 262144, 15, 65501, 262144, 15, 65502, 262144, 15, 65503, 262144, 15, 65504, 262144, 15, 65505, 262144, 15, 65506, 262144, 15, 65507, 262144, 15, 65508, 262144, 15, 65509, 262144, 15, 65510, 262144, 15, 65511, 262144, 15, 65512, 262144, 15, 65513, 262144, 15, 65514, 262144, 15, 65515, 262144, 15, 65516, 262144, 15, 65517, 262144, 15, 65518, 262144, 15, 65519, 262144, 15, 65520, 262144, 11, 65520, 262144, 12, 65520, 262144, 13, 65520, 262144, 14, 65520, 262144, 10, 65503, 262145, 11, 65503, 262145, 12, 65503, 262145, 12, 65502, 262145, 12, 65500, 262145, 12, 65499, 262145, 12, 65501, 262145, 1, 65496, 262145, 1, 65497, 262145, 1, 65498, 262145, 1, 65499, 262145, 65521, 65498, 262145, 65522, 65498, 262145, 65523, 65498, 262145, 65524, 65498, 262145, 65525, 65498, 262145, 7, 65513, 262145, 7, 65514, 262145, 7, 65515, 262145, 10, 65512, 262145, 11, 65512, 262145, 12, 65512, 262145, 7, 65510, 262145, 65525, 65506, 458753, 65524, 65506, 458753, 65523, 65506, 458753, 65524, 65507, 458753, 65524, 65508, 458753, 65524, 65509, 458753, 65524, 65510, 458753, 65524, 65511, 458753, 65524, 65512, 458753, 65524, 65513, 458753, 65525, 65514, 458753, 65524, 65514, 458753, 65531, 65496, 458753, 65531, 65497, 458753, 7, 65496, 458753, 7, 65497, 458753, 7, 65498, 458753, 6, 65498, 458753, 5, 65498, 458753)
+}
+
+[node name="Coin" type="Node3D" parent="Endless"]
+
+[node name="Wave1" type="Node3D" parent="Endless/Coin"]
+
+[node name="Coin" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -3.753986)
+
+[node name="Coin5" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -5.4735866, 0.31327915, -5.337288)
+
+[node name="Coin2" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -1.2642851, 0.31327915, -1.3186651)
+
+[node name="Coin6" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.2492557, 0.31327915, 5.193162)
+
+[node name="Coin7" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 8.756789, 0.31327915, 0.73210025)
+
+[node name="Coin3" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
+
+[node name="Coin4" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
+
+[node name="Wave2" type="Node3D" parent="Endless/Coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.638604, 0)
 visible = false
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.12668373, -0.9319973, 0.3396062, 0, 0.34236458, 0.9395672, -0.9919432, 0.119027875, -0.04337202, 0, 3.1349182, 0)
+[node name="Coin" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -0.8520727, 0.31327915, -12.625681)
+
+[node name="Coin5" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, -11.722661)
+
+[node name="Coin2" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
+
+[node name="Coin6" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 14.225895, 0.31327915, 5.6127205)
+
+[node name="Coin7" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 13.81295, 0.31327915, -11.544207)
+
+[node name="Coin3" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -14.749448)
+
+[node name="Coin4" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 3.21249)
+
+[node name="Wave3" type="Node3D" parent="Endless/Coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.835264, 0)
 visible = false
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.96609247, 0.22561306, -0.12555422, -0.14698637, -0.08078802, 0.98583376, 0.21227372, 0.97086143, 0.11121079, 0, 3.1349182, 0)
-directional_shadow_split_2 = 0.48
+[node name="Coin" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
 
-[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.42734212, 0.8494535, -0.30952847, 4.009002e-10, 0.34236464, 0.9395673, 0.90409017, -0.40151656, 0.14630675, 0, 3.1349182, 0)
+[node name="Coin5" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
+
+[node name="Coin2" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
+
+[node name="Coin6" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
+
+[node name="Coin7" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
+
+[node name="Coin3" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
+
+[node name="Coin4" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
+
+[node name="Wave4" type="Node3D" parent="Endless/Coin"]
+transform = Transform3D(-0.013840038, 0, -0.9999042, 0, 1, 0, 0.9999042, 0, -0.013840038, -0.36358705, 11.776955, -0.0050325408)
 visible = false
 
-[node name="DirectionalLight3D5" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.42734206, 0.84945333, -0.3095284, 4.0090015e-10, 0.3423646, 0.9395672, 0.90409005, -0.40151656, 0.14630678, 3.8098278, 3.1349182, 4.1253147)
+[node name="Coin" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
+
+[node name="Coin5" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
+
+[node name="Coin2" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
+
+[node name="Coin6" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
+
+[node name="Coin7" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
+
+[node name="Coin3" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
+
+[node name="Coin4" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
+
+[node name="Wave5" type="Node3D" parent="Endless/Coin"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.36358705, 11.855336, -0.0050325408)
 visible = false
 
-[node name="DirectionalLight3D6" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.42732665, -0.8465126, 0.3175032, -0.0036322265, -0.3495723, -0.93690234, 0.90409, -0.40151653, 0.14630678, -10.915783, 3.1349182, 10.896839)
+[node name="Coin" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
+
+[node name="Coin5" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
+
+[node name="Coin2" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
+
+[node name="Coin6" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
+
+[node name="Coin7" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
+
+[node name="Coin3" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
+
+[node name="Coin4" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
+
+[node name="Wave6" type="Node3D" parent="Endless/Coin"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.36358705, 13.852223, -0.0050325408)
 visible = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u5sy4")
+[node name="Coin" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
+
+[node name="Coin5" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
+
+[node name="Coin2" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
+
+[node name="Coin6" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
+
+[node name="Coin7" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
+
+[node name="Coin3" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
+
+[node name="Coin4" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Endless/Coin"]
+libraries = {
+&"": SubResource("AnimationLibrary_kvuet")
+}
 
 [connection signal="body_entered" from="Enemies/Enemy1" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy2" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy3" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy4" to="Player" method="_on_enemy_body_entered"]
+[connection signal="animation_finished" from="Endless/Coin/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

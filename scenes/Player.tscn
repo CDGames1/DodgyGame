@@ -15,8 +15,13 @@ var rotation_speed: float = 9.0
 var camera_node_name = \"\"
 @onready var camera = camera_node_name
 @onready var mesh = $PlayerMesh # placing mesh as variation 1 in the shape at the moment since we havent done trialling for the player design
+var is_started = false
 
 func _physics_process(delta):
+	if Global.speed_boost_activate == true and is_started == false:
+		$SpeedBoostDuration.start()
+		is_started = true
+		speed = 12.0
 	if Global.mobile == true:
 		$Joystick.show()
 		$Joystick.up_input = \"move_up\"
@@ -64,6 +69,13 @@ func _on_enemy_body_entered(body):
 		if Global.coin_counter >= Global.highscore:
 			Global.highscore = Global.coin_counter
 		get_tree().change_scene_to_file(\"res://scenes/You Lose.tscn\")
+
+
+func _on_speed_boost_duration_timeout():
+	Global.speed_boost_activate = false
+	is_started = false
+	speed = 6.0
+	$SpeedBoostDuration.stop()
 "
 
 [sub_resource type="SphereShape3D" id="1"]
@@ -118,3 +130,8 @@ texture = ExtResource("5_70d11")
 
 [node name="Joystick" parent="." instance=ExtResource("5_qu4a1")]
 position = Vector2(151, 462)
+
+[node name="SpeedBoostDuration" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="SpeedBoostDuration" to="." method="_on_speed_boost_duration_timeout"]
