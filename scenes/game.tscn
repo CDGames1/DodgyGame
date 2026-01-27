@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://dwogwhnf3rkyi"]
+[gd_scene format=3 uid="uid://dwogwhnf3rkyi"]
 
 [ext_resource type="Script" uid="uid://8tdouxuryasp" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cql14krt0ev2i" path="res://scenes/Player.tscn" id="1_uwrxv"]
 [ext_resource type="AudioStream" uid="uid://bawcchke0m7jr" path="res://assets/audio/GameplayMusic.mp3" id="2_gee14"]
 [ext_resource type="MeshLibrary" uid="uid://bcqv6vrtjpj2w" path="res://assets/blocks.tres" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bjnvoukof8bxc" path="res://scenes/Enemy.tscn" id="3_lnu2h"]
-[ext_resource type="AudioStream" uid="uid://bpp6yqicci0ou" path="res://assets/audio/hitHurt.wav" id="3_p57ef"]
+[ext_resource type="AudioStream" uid="uid://dti0uihlbyyvs" path="res://assets/audio/hitHurt.mp3" id="4_gee14"]
 [ext_resource type="PackedScene" uid="uid://qwvymfat11an" path="res://assets/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bui4rl6yi8opr" path="res://assets/speed_boost.tscn" id="7_u5sy4"]
 
@@ -18,13 +18,13 @@ sky_horizon_color = Color(0.9850469, 0.45904088, 0.57020336, 1)
 ground_bottom_color = Color(1.2032687e-07, 0.18593007, 0.3025992, 1)
 ground_horizon_color = Color(0.4857828, 0.4940496, 0.51059407, 1)
 
-[sub_resource type="Sky" id="Sky_p57ef"]
+[sub_resource type="Sky" id="Sky_gee14"]
 sky_material = SubResource("ProceduralSkyMaterial_iywne")
 
 [sub_resource type="Environment" id="Environment_u5sy4"]
 background_mode = 2
 background_energy_multiplier = 1.83
-sky = SubResource("Sky_p57ef")
+sky = SubResource("Sky_gee14")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.26
 
@@ -181,33 +181,6 @@ _data = {
 &"RESET": SubResource("Animation_vtaks")
 }
 
-[sub_resource type="Animation" id="Animation_kvpfn"]
-resource_name = "Wave2Start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Wave2:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Wave2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 9.638604, 0), Vector3(0, -0.14346218, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_dinhu"]
 length = 0.001
 tracks/0/type = "value"
@@ -331,6 +304,33 @@ tracks/9/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_kvpfn"]
+resource_name = "Wave2Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wave2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wave2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 9.638604, 0), Vector3(0, -0.14346218, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_kvuet"]
 resource_name = "Wave3Start"
 tracks/0/type = "value"
@@ -449,78 +449,70 @@ _data = {
 &"Wave6Start": SubResource("Animation_ca42v")
 }
 
-[node name="game" type="Node3D"]
+[node name="game" type="Node3D" unique_id=774219563]
 script = ExtResource("1_iywne")
 
-[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="." unique_id=88255718]
 stream = ExtResource("2_gee14")
 pitch_scale = 1.04
 autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="v2" type="CSGBox3D" parent="."]
+[node name="v2" type="CSGBox3D" parent="." unique_id=814221686]
 transform = Transform3D(22.464, 0, -1.7344679e-06, 0, -0.005, 0, 1.9638653e-06, 0, 19.84, 0.1734438, 0, -3.20131)
 size = Vector3(1.3866577, 1, 1.3027344)
 material = SubResource("StandardMaterial3D_lnu2h")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=1721656103 instance=ExtResource("1_uwrxv")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 0, -0.44303995, 1.9208126)
 
-[node name="HitHurt" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("3_p57ef")
+[node name="HitHurt" type="AudioStreamPlayer" parent="Player" unique_id=386588548]
+stream = ExtResource("4_gee14")
 
-[node name="Camera3D" type="Camera3D" parent="Player" groups=["Camera"]]
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=499602136 groups=["Camera"]]
 transform = Transform3D(0.9974333, 0, 0.07160188, -0.02294702, 0.947255, 0.3196582, -0.067825235, -0.32048073, 0.94482374, 0.29620647, 3.331068, 3.9831374)
 
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1189934970]
 transform = Transform3D(-0.96609247, 0.22561306, -0.12555422, -0.14698637, -0.08078802, 0.98583376, 0.21227372, 0.97086143, 0.11121079, 0, 3.1349182, 0)
 directional_shadow_split_2 = 0.48
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1978452398]
 environment = SubResource("Environment_u5sy4")
 
-[node name="Enemies" type="Node3D" parent="."]
+[node name="Enemies" type="Node3D" parent="." unique_id=1150472328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
 
-[node name="Enemy1" parent="Enemies" instance=ExtResource("3_lnu2h")]
+[node name="Enemy1" parent="Enemies" unique_id=1421782971 instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -8.389009, 0.57808316, -23.166876)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy1"]
-libraries = {
-&"": SubResource("AnimationLibrary_iywne")
-}
-autoplay = "Anim1"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy1" unique_id=707292522]
+libraries/ = SubResource("AnimationLibrary_iywne")
+autoplay = &"Anim1"
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("3_lnu2h")]
+[node name="Enemy2" parent="Enemies" unique_id=599146670 instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, -3.6025348, 0.57808316, -28.560839)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy2"]
-libraries = {
-&"": SubResource("AnimationLibrary_u5sy4")
-}
-autoplay = "Anim2"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy2" unique_id=81186585]
+libraries/ = SubResource("AnimationLibrary_u5sy4")
+autoplay = &"Anim2"
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("3_lnu2h")]
+[node name="Enemy3" parent="Enemies" unique_id=592230169 instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 1.9735107, 0.57808316, -26.426775)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy3"]
-libraries = {
-&"": SubResource("AnimationLibrary_0tnpc")
-}
-autoplay = "Anim3"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy3" unique_id=585053669]
+libraries/ = SubResource("AnimationLibrary_0tnpc")
+autoplay = &"Anim3"
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("3_lnu2h")]
+[node name="Enemy4" parent="Enemies" unique_id=1629549274 instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1.18, 0, 0, 0, 1.18, 0, 0, 0, 1.18, 14.219156, 0.57808316, -26.426775)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy4"]
-libraries = {
-&"": SubResource("AnimationLibrary_kvpfn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy4" unique_id=2012213944]
+libraries/ = SubResource("AnimationLibrary_kvpfn")
 
-[node name="Level" type="Node3D" parent="."]
+[node name="Level" type="Node3D" parent="." unique_id=1994189753]
 
-[node name="GridMap" type="GridMap" parent="Level"]
+[node name="GridMap" type="GridMap" parent="Level" unique_id=1136404269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
 mesh_library = ExtResource("2_yqjtg")
 cell_size = Vector3(1, 1, 1)
@@ -528,68 +520,68 @@ data = {
 "cells": PackedInt32Array(10, 65520, 262144, 65526, 65520, 1441792, 65527, 65520, 1441792, 65528, 65520, 1441792, 65529, 65520, 1441792, 65530, 65520, 1441792, 65531, 65520, 1441792, 65532, 65520, 1441792, 65533, 65520, 1441792, 65534, 65520, 1441792, 65535, 65520, 1441792, 0, 65520, 1441792, 1, 65520, 1441792, 2, 65520, 1441792, 3, 65520, 1441792, 4, 65520, 1441792, 5, 65520, 1441792, 6, 65520, 1441792, 7, 65520, 1441792, 8, 65520, 1441792, 9, 65520, 1441792, 65531, 65502, 1441793, 65531, 65503, 1441793, 65531, 65504, 1441793, 65531, 65505, 1441793, 65531, 65506, 1441793, 65530, 65506, 1441793, 65529, 65506, 1441793, 65531, 65519, 1441793, 65531, 65518, 1441793, 65531, 65517, 1441793, 65531, 65516, 1441793, 65531, 65515, 1441793, 65532, 65515, 1441793, 65533, 65515, 1441793, 65534, 65515, 1441793, 65535, 65515, 1441793, 65529, 65515, 1441793, 65530, 65515, 1441793, 0, 65507, 1441793, 1, 65507, 1441793, 2, 65507, 1441793, 3, 65507, 1441793, 4, 65507, 1441793, 5, 65507, 1441793, 5, 65506, 1441793, 5, 65505, 1441793, 5, 65504, 1441793, 5, 65503, 1441793, 0, 65508, 1441793, 0, 65509, 1441793, 0, 65510, 1441793, 7, 65512, 1441793, 8, 65512, 1441793, 9, 65512, 1441793, 4, 65519, 1441793, 4, 65518, 1441793, 4, 65517, 1441793, 7, 65511, 1441793, 4, 65516, 1441793, 4, 65515, 1441793, 65535, 65510, 1441793, 65534, 65510, 1441793, 65526, 65506, 65537, 65525, 65520, 0, 65524, 65520, 0, 65523, 65520, 0, 65522, 65520, 0, 65521, 65520, 0, 65520, 65520, 0, 65520, 65519, 0, 65520, 65518, 0, 65520, 65517, 0, 65520, 65516, 0, 65520, 65515, 0, 65520, 65514, 0, 65520, 65513, 0, 65520, 65512, 0, 65520, 65511, 0, 65520, 65510, 0, 65520, 65509, 0, 65520, 65508, 0, 65520, 65507, 0, 65520, 65506, 0, 65520, 65505, 0, 65520, 65504, 0, 65520, 65503, 0, 65520, 65502, 0, 65520, 65501, 0, 65520, 65500, 0, 65520, 65499, 0, 65520, 65498, 0, 65520, 65497, 0, 65520, 65496, 0, 65520, 65495, 0, 65521, 65495, 786432, 65522, 65495, 786432, 65523, 65495, 786432, 65524, 65495, 786432, 65525, 65495, 786432, 65526, 65495, 786432, 65527, 65495, 786432, 65528, 65495, 786432, 65529, 65495, 786432, 65530, 65495, 786432, 65531, 65495, 786432, 65532, 65495, 786432, 65533, 65495, 786432, 65534, 65495, 786432, 65535, 65495, 786432, 0, 65495, 786432, 1, 65495, 786432, 2, 65495, 786432, 3, 65495, 786432, 4, 65495, 786432, 5, 65495, 786432, 6, 65495, 786432, 7, 65495, 786432, 8, 65495, 786432, 9, 65495, 786432, 10, 65495, 786432, 11, 65495, 786432, 12, 65495, 786432, 13, 65495, 786432, 14, 65495, 786432, 15, 65495, 786432, 15, 65496, 262144, 15, 65497, 262144, 15, 65498, 262144, 15, 65499, 262144, 15, 65500, 262144, 15, 65501, 262144, 15, 65502, 262144, 15, 65503, 262144, 15, 65504, 262144, 15, 65505, 262144, 15, 65506, 262144, 15, 65507, 262144, 15, 65508, 262144, 15, 65509, 262144, 15, 65510, 262144, 15, 65511, 262144, 15, 65512, 262144, 15, 65513, 262144, 15, 65514, 262144, 15, 65515, 262144, 15, 65516, 262144, 15, 65517, 262144, 15, 65518, 262144, 15, 65519, 262144, 15, 65520, 262144, 11, 65520, 262144, 12, 65520, 262144, 13, 65520, 262144, 14, 65520, 262144, 10, 65503, 262145, 11, 65503, 262145, 12, 65503, 262145, 12, 65502, 262145, 12, 65500, 262145, 12, 65499, 262145, 12, 65501, 262145, 1, 65496, 262145, 1, 65497, 262145, 1, 65498, 262145, 1, 65499, 262145, 65521, 65498, 262145, 65522, 65498, 262145, 65523, 65498, 262145, 65524, 65498, 262145, 65525, 65498, 262145, 7, 65513, 262145, 7, 65514, 262145, 7, 65515, 262145, 10, 65512, 262145, 11, 65512, 262145, 12, 65512, 262145, 7, 65510, 262145, 65525, 65506, 458753, 65524, 65506, 458753, 65523, 65506, 458753, 65524, 65507, 458753, 65524, 65508, 458753, 65524, 65509, 458753, 65524, 65510, 458753, 65524, 65511, 458753, 65524, 65512, 458753, 65524, 65513, 458753, 65525, 65514, 458753, 65524, 65514, 458753, 65531, 65496, 458753, 65531, 65497, 458753, 7, 65496, 458753, 7, 65497, 458753, 7, 65498, 458753, 6, 65498, 458753, 5, 65498, 458753)
 }
 
-[node name="Coin" type="Node3D" parent="Level"]
+[node name="Coin" type="Node3D" parent="Level" unique_id=428794113]
 
-[node name="Coin" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Level/Coin" unique_id=697369931 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -3.753986)
 
-[node name="Coin5" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Level/Coin" unique_id=550152327 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -5.4735866, 0.31327915, -5.337288)
 
-[node name="Coin2" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Level/Coin" unique_id=320011372 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -1.2642851, 0.31327915, -1.3186651)
 
-[node name="Coin6" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Level/Coin" unique_id=1242742525 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.2492557, 0.31327915, 5.193162)
 
-[node name="Coin7" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Level/Coin" unique_id=388290796 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 8.756789, 0.31327915, 0.73210025)
 
-[node name="Coin3" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Level/Coin" unique_id=758110522 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
 
-[node name="Coin4" parent="Level/Coin" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Level/Coin" unique_id=1997906232 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
 
-[node name="Speed Boost" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost" parent="Level" unique_id=300474497 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, 3.1251209)
 
-[node name="Speed Boost2" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost2" parent="Level" unique_id=1757669980 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, -13.521545)
 
-[node name="Speed Boost3" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost3" parent="Level" unique_id=1206865362 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -13.521545)
 
-[node name="Speed Boost4" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost4" parent="Level" unique_id=1148114656 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -6.246407)
 
-[node name="Speed Boost5" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost5" parent="Level" unique_id=879217235 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -14.422438, -0.01085788, -6.246407)
 
-[node name="Speed Boost6" parent="Level" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost6" parent="Level" unique_id=1730206316 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -5.698257, -0.01085788, 6.6523967)
 
-[node name="Endless" type="Node3D" parent="."]
+[node name="Endless" type="Node3D" parent="." unique_id=810523572]
 
-[node name="Speed Boost" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost" parent="Endless" unique_id=2018548818 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, 3.1251209)
 
-[node name="Speed Boost2" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost2" parent="Endless" unique_id=999164109 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, -13.521545)
 
-[node name="Speed Boost3" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost3" parent="Endless" unique_id=331176788 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -13.521545)
 
-[node name="Speed Boost4" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost4" parent="Endless" unique_id=2132995984 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -3.6982489, -0.01085788, -6.246407)
 
-[node name="Speed Boost5" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost5" parent="Endless" unique_id=152220002 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -14.422438, -0.01085788, -6.246407)
 
-[node name="Speed Boost6" parent="Endless" instance=ExtResource("7_u5sy4")]
+[node name="Speed Boost6" parent="Endless" unique_id=125888489 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, -5.698257, -0.01085788, 6.6523967)
 
-[node name="GridMap" type="GridMap" parent="Endless"]
+[node name="GridMap" type="GridMap" parent="Endless" unique_id=2102377781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.947361)
 mesh_library = ExtResource("2_yqjtg")
 cell_size = Vector3(1, 1, 1)
@@ -597,160 +589,158 @@ data = {
 "cells": PackedInt32Array(10, 65520, 262144, 65526, 65520, 1441792, 65527, 65520, 1441792, 65528, 65520, 1441792, 65529, 65520, 1441792, 65530, 65520, 1441792, 65531, 65520, 1441792, 65532, 65520, 1441792, 65533, 65520, 1441792, 65534, 65520, 1441792, 65535, 65520, 1441792, 0, 65520, 1441792, 1, 65520, 1441792, 2, 65520, 1441792, 3, 65520, 1441792, 4, 65520, 1441792, 5, 65520, 1441792, 6, 65520, 1441792, 7, 65520, 1441792, 8, 65520, 1441792, 9, 65520, 1441792, 65531, 65502, 1441793, 65531, 65503, 1441793, 65531, 65504, 1441793, 65531, 65505, 1441793, 65531, 65506, 1441793, 65530, 65506, 1441793, 65529, 65506, 1441793, 65531, 65519, 1441793, 65531, 65518, 1441793, 65531, 65517, 1441793, 65531, 65516, 1441793, 65531, 65515, 1441793, 65532, 65515, 1441793, 65533, 65515, 1441793, 65534, 65515, 1441793, 65535, 65515, 1441793, 65529, 65515, 1441793, 65530, 65515, 1441793, 0, 65507, 1441793, 1, 65507, 1441793, 2, 65507, 1441793, 3, 65507, 1441793, 4, 65507, 1441793, 5, 65507, 1441793, 5, 65506, 1441793, 5, 65505, 1441793, 5, 65504, 1441793, 5, 65503, 1441793, 0, 65508, 1441793, 0, 65509, 1441793, 0, 65510, 1441793, 7, 65512, 1441793, 8, 65512, 1441793, 9, 65512, 1441793, 4, 65519, 1441793, 4, 65518, 1441793, 4, 65517, 1441793, 7, 65511, 1441793, 4, 65516, 1441793, 4, 65515, 1441793, 65535, 65510, 1441793, 65534, 65510, 1441793, 65526, 65506, 65537, 65525, 65520, 0, 65524, 65520, 0, 65523, 65520, 0, 65522, 65520, 0, 65521, 65520, 0, 65520, 65520, 0, 65520, 65519, 0, 65520, 65518, 0, 65520, 65517, 0, 65520, 65516, 0, 65520, 65515, 0, 65520, 65514, 0, 65520, 65513, 0, 65520, 65512, 0, 65520, 65511, 0, 65520, 65510, 0, 65520, 65509, 0, 65520, 65508, 0, 65520, 65507, 0, 65520, 65506, 0, 65520, 65505, 0, 65520, 65504, 0, 65520, 65503, 0, 65520, 65502, 0, 65520, 65501, 0, 65520, 65500, 0, 65520, 65499, 0, 65520, 65498, 0, 65520, 65497, 0, 65520, 65496, 0, 65520, 65495, 0, 65521, 65495, 786432, 65522, 65495, 786432, 65523, 65495, 786432, 65524, 65495, 786432, 65525, 65495, 786432, 65526, 65495, 786432, 65527, 65495, 786432, 65528, 65495, 786432, 65529, 65495, 786432, 65530, 65495, 786432, 65531, 65495, 786432, 65532, 65495, 786432, 65533, 65495, 786432, 65534, 65495, 786432, 65535, 65495, 786432, 0, 65495, 786432, 1, 65495, 786432, 2, 65495, 786432, 3, 65495, 786432, 4, 65495, 786432, 5, 65495, 786432, 6, 65495, 786432, 7, 65495, 786432, 8, 65495, 786432, 9, 65495, 786432, 10, 65495, 786432, 11, 65495, 786432, 12, 65495, 786432, 13, 65495, 786432, 14, 65495, 786432, 15, 65495, 786432, 15, 65496, 262144, 15, 65497, 262144, 15, 65498, 262144, 15, 65499, 262144, 15, 65500, 262144, 15, 65501, 262144, 15, 65502, 262144, 15, 65503, 262144, 15, 65504, 262144, 15, 65505, 262144, 15, 65506, 262144, 15, 65507, 262144, 15, 65508, 262144, 15, 65509, 262144, 15, 65510, 262144, 15, 65511, 262144, 15, 65512, 262144, 15, 65513, 262144, 15, 65514, 262144, 15, 65515, 262144, 15, 65516, 262144, 15, 65517, 262144, 15, 65518, 262144, 15, 65519, 262144, 15, 65520, 262144, 11, 65520, 262144, 12, 65520, 262144, 13, 65520, 262144, 14, 65520, 262144, 10, 65503, 262145, 11, 65503, 262145, 12, 65503, 262145, 12, 65502, 262145, 12, 65500, 262145, 12, 65499, 262145, 12, 65501, 262145, 1, 65496, 262145, 1, 65497, 262145, 1, 65498, 262145, 1, 65499, 262145, 65521, 65498, 262145, 65522, 65498, 262145, 65523, 65498, 262145, 65524, 65498, 262145, 65525, 65498, 262145, 7, 65513, 262145, 7, 65514, 262145, 7, 65515, 262145, 10, 65512, 262145, 11, 65512, 262145, 12, 65512, 262145, 7, 65510, 262145, 65525, 65506, 458753, 65524, 65506, 458753, 65523, 65506, 458753, 65524, 65507, 458753, 65524, 65508, 458753, 65524, 65509, 458753, 65524, 65510, 458753, 65524, 65511, 458753, 65524, 65512, 458753, 65524, 65513, 458753, 65525, 65514, 458753, 65524, 65514, 458753, 65531, 65496, 458753, 65531, 65497, 458753, 7, 65496, 458753, 7, 65497, 458753, 7, 65498, 458753, 6, 65498, 458753, 5, 65498, 458753)
 }
 
-[node name="Coin" type="Node3D" parent="Endless"]
+[node name="Coin" type="Node3D" parent="Endless" unique_id=1537000611]
 
-[node name="Wave1" type="Node3D" parent="Endless/Coin"]
+[node name="Wave1" type="Node3D" parent="Endless/Coin" unique_id=1224782793]
 
-[node name="Coin" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave1" unique_id=1798630378 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -3.753986)
 
-[node name="Coin5" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave1" unique_id=1221460924 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -5.4735866, 0.31327915, -5.337288)
 
-[node name="Coin2" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave1" unique_id=1962449 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -1.2642851, 0.31327915, -1.3186651)
 
-[node name="Coin6" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave1" unique_id=699300118 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.2492557, 0.31327915, 5.193162)
 
-[node name="Coin7" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave1" unique_id=1159047512 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 8.756789, 0.31327915, 0.73210025)
 
-[node name="Coin3" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave1" unique_id=1338112982 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
 
-[node name="Coin4" parent="Endless/Coin/Wave1" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave1" unique_id=443624721 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
 
-[node name="Wave2" type="Node3D" parent="Endless/Coin"]
+[node name="Wave2" type="Node3D" parent="Endless/Coin" unique_id=428023901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.638604, 0)
 visible = false
 
-[node name="Coin" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave2" unique_id=594398461 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -0.8520727, 0.31327915, -12.625681)
 
-[node name="Coin5" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave2" unique_id=1499782137 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, -11.722661)
 
-[node name="Coin2" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave2" unique_id=67971227 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
 
-[node name="Coin6" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave2" unique_id=839604115 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 14.225895, 0.31327915, 5.6127205)
 
-[node name="Coin7" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave2" unique_id=255449891 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 13.81295, 0.31327915, -11.544207)
 
-[node name="Coin3" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave2" unique_id=843074401 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -14.749448)
 
-[node name="Coin4" parent="Endless/Coin/Wave2" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave2" unique_id=1819652467 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 3.21249)
 
-[node name="Wave3" type="Node3D" parent="Endless/Coin"]
+[node name="Wave3" type="Node3D" parent="Endless/Coin" unique_id=1213732658]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.835264, 0)
 visible = false
 
-[node name="Coin" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave3" unique_id=634109534 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
 
-[node name="Coin5" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave3" unique_id=557592699 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
 
-[node name="Coin2" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave3" unique_id=324928794 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
 
-[node name="Coin6" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave3" unique_id=1706927194 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
 
-[node name="Coin7" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave3" unique_id=1114222571 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
 
-[node name="Coin3" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave3" unique_id=926506822 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
 
-[node name="Coin4" parent="Endless/Coin/Wave3" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave3" unique_id=1285060707 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
 
-[node name="Wave4" type="Node3D" parent="Endless/Coin"]
+[node name="Wave4" type="Node3D" parent="Endless/Coin" unique_id=2017538301]
 transform = Transform3D(-0.013840038, 0, -0.9999042, 0, 1, 0, 0.9999042, 0, -0.013840038, -0.36358705, 11.776955, -0.0050325408)
 visible = false
 
-[node name="Coin" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave4" unique_id=768931537 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
 
-[node name="Coin5" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave4" unique_id=1029348853 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
 
-[node name="Coin2" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave4" unique_id=761922482 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
 
-[node name="Coin6" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave4" unique_id=2066375014 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
 
-[node name="Coin7" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave4" unique_id=1249044514 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
 
-[node name="Coin3" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave4" unique_id=1615757549 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
 
-[node name="Coin4" parent="Endless/Coin/Wave4" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave4" unique_id=1227331917 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
 
-[node name="Wave5" type="Node3D" parent="Endless/Coin"]
+[node name="Wave5" type="Node3D" parent="Endless/Coin" unique_id=436277946]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.36358705, 11.855336, -0.0050325408)
 visible = false
 
-[node name="Coin" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave5" unique_id=1678260754 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
 
-[node name="Coin5" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave5" unique_id=1538164529 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
 
-[node name="Coin2" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave5" unique_id=1207505033 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
 
-[node name="Coin6" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave5" unique_id=1454451430 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
 
-[node name="Coin7" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave5" unique_id=138739217 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
 
-[node name="Coin3" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave5" unique_id=1967944515 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
 
-[node name="Coin4" parent="Endless/Coin/Wave5" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave5" unique_id=2138928548 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
 
-[node name="Wave6" type="Node3D" parent="Endless/Coin"]
+[node name="Wave6" type="Node3D" parent="Endless/Coin" unique_id=1767793924]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.36358705, 13.852223, -0.0050325408)
 visible = false
 
-[node name="Coin" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin" parent="Endless/Coin/Wave6" unique_id=1431006799 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 1.4621959, 0.31327915, -4.5965004)
 
-[node name="Coin5" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin5" parent="Endless/Coin/Wave6" unique_id=506520213 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -11.601681, 0.31327915, 7.531192)
 
-[node name="Coin2" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin2" parent="Endless/Coin/Wave6" unique_id=605398521 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, 5.50978, 0.31327915, -8.394356)
 
-[node name="Coin6" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin6" parent="Endless/Coin/Wave6" unique_id=2077069391 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.3808928, 0.31327915, 5.1993146)
 
-[node name="Coin7" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin7" parent="Endless/Coin/Wave6" unique_id=1838722136 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 6.865867, 0.31327915, -6.1110682)
 
-[node name="Coin3" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin3" parent="Endless/Coin/Wave6" unique_id=1535826767 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -9.114753, 0.31327915, -3.5346975)
 
-[node name="Coin4" parent="Endless/Coin/Wave6" instance=ExtResource("4_lbhrr")]
+[node name="Coin4" parent="Endless/Coin/Wave6" unique_id=1626504225 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -14.047571, 0.31327915, 3.21249)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Endless/Coin"]
-libraries = {
-&"": SubResource("AnimationLibrary_kvuet")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Endless/Coin" unique_id=909016097]
+libraries/ = SubResource("AnimationLibrary_kvuet")
 
 [connection signal="body_entered" from="Enemies/Enemy1" to="Player" method="_on_enemy_body_entered"]
 [connection signal="body_entered" from="Enemies/Enemy2" to="Player" method="_on_enemy_body_entered"]

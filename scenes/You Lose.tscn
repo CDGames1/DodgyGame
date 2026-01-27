@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm066k3gyk5bj"]
+[gd_scene format=3 uid="uid://bm066k3gyk5bj"]
 
 [ext_resource type="Script" uid="uid://cy3n04hl6av40" path="res://scenes/you_lose.gd" id="1_xd65x"]
 [ext_resource type="FontFile" uid="uid://dqvpbvxs6mxxv" path="res://assets/Lost Tumbler.ttf" id="3_cghgc"]
-[ext_resource type="AudioStream" uid="uid://du4a4240e5kin" path="res://assets/audio/blipSelect.wav" id="3_mhwrg"]
+[ext_resource type="AudioStream" uid="uid://cm8o8phhbgaqj" path="res://assets/audio/blipSelect.mp3" id="3_mhwrg"]
 
-[node name="YouLose" type="Control"]
+[node name="YouLose" type="Control" unique_id=1798532151]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xd65x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1309367795]
 layout_mode = 0
 offset_left = -2648.0
 offset_top = -1629.0
@@ -21,7 +21,7 @@ offset_right = 3192.0
 offset_bottom = 1946.0
 color = Color(0.8392157, 0.20392157, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=531989824]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 180.99998
@@ -32,7 +32,7 @@ theme_override_fonts/font = ExtResource("3_cghgc")
 theme_override_font_sizes/font_size = 226
 text = "You Lose"
 
-[node name="Retry" type="Button" parent="."]
+[node name="Retry" type="Button" parent="." unique_id=750908997]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 376.0
@@ -41,7 +41,7 @@ offset_bottom = 477.0
 theme_override_fonts/font = ExtResource("3_cghgc")
 text = "Retry"
 
-[node name="MainMenu" type="Button" parent="."]
+[node name="MainMenu" type="Button" parent="." unique_id=1988596190]
 layout_mode = 0
 offset_left = 709.0
 offset_top = 373.0
@@ -50,7 +50,7 @@ offset_bottom = 474.0
 theme_override_fonts/font = ExtResource("3_cghgc")
 text = "Main Menu"
 
-[node name="HighscoreTitle" type="Label" parent="."]
+[node name="HighscoreTitle" type="Label" parent="." unique_id=908537484]
 layout_mode = 0
 offset_left = 460.0
 offset_top = 279.0
@@ -61,7 +61,7 @@ theme_override_fonts/font = ExtResource("3_cghgc")
 theme_override_font_sizes/font_size = 86
 text = "Highscore:"
 
-[node name="Counter" type="Label" parent="."]
+[node name="Counter" type="Label" parent="." unique_id=1898801498]
 layout_mode = 0
 offset_left = 615.0
 offset_top = 279.0
@@ -72,7 +72,7 @@ theme_override_fonts/font = ExtResource("3_cghgc")
 theme_override_font_sizes/font_size = 86
 text = "0"
 
-[node name="BlipSelect" type="AudioStreamPlayer" parent="."]
+[node name="BlipSelect" type="AudioStreamPlayer" parent="." unique_id=511590905]
 stream = ExtResource("3_mhwrg")
 bus = &"SFX"
 

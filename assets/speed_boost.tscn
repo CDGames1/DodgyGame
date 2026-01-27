@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bui4rl6yi8opr"]
+[gd_scene format=3 uid="uid://bui4rl6yi8opr"]
 
 [ext_resource type="Script" uid="uid://bl2tkglg3bbm5" path="res://scripts/speed_boost.gd" id="1_6krn2"]
-[ext_resource type="AudioStream" uid="uid://nellq3m687yd" path="res://assets/audio/powerUp.wav" id="2_di3jq"]
+[ext_resource type="AudioStream" uid="uid://x0j8rxkdu7ud" path="res://assets/audio/powerUp.mp3" id="2_6krn2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6krn2"]
 albedo_color = Color(0.30588236, 1, 0.41568628, 1)
@@ -97,29 +97,27 @@ _data = {
 height = 0.16734314
 radius = 0.13476563
 
-[node name="Speed Boost" type="Area3D"]
+[node name="Speed Boost" type="Area3D" unique_id=144375577]
 script = ExtResource("1_6krn2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_di3jq")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=428462505]
+stream = ExtResource("2_6krn2")
 bus = &"SFX"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=392480537]
 transform = Transform3D(0.21084613, 0, 0, 0, -9.216377e-09, -0.21084613, 0, 0.21084613, -9.216377e-09, 0, 0.29567298, 0)
 mesh = SubResource("SphereMesh_hvvrh")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1149824262]
 transform = Transform3D(0.33199564, 0, 0, 0, 0.4742795, 8.881784e-16, 0, -1.7763568e-15, 0.21342579, 0, 0.0711419, -0.49954438)
 mesh = SubResource("SphereMesh_hvvrh")
 skeleton = NodePath("../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_vnkb4")
-}
-autoplay = "bounce_auto"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=821431428]
+libraries/ = SubResource("AnimationLibrary_vnkb4")
+autoplay = &"bounce_auto"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1246639771]
 transform = Transform3D(1, 0, 0, 0, -0.010524122, -0.9999446, 0, 0.9999446, -0.010524122, -0.015919179, 0.27987507, -0.0006942367)
 shape = SubResource("CylinderShape3D_pivsm")
 

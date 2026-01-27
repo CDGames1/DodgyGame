@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cql14krt0ev2i"]
+[gd_scene format=3 uid="uid://cql14krt0ev2i"]
 
 [ext_resource type="Texture2D" uid="uid://dyy6anhlr4m4h" path="res://texture/Green/texture_09.png" id="2_v6fml"]
 [ext_resource type="Script" uid="uid://bcfr2v52hm2ft" path="res://scripts/hud.gd" id="4_70d11"]
 [ext_resource type="FontFile" uid="uid://dqvpbvxs6mxxv" path="res://assets/Lost Tumbler.ttf" id="4_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="5_70d11"]
 [ext_resource type="PackedScene" uid="uid://ddo47f38ulwyw" path="res://addons/joystick_addon/joystick.tscn" id="5_qu4a1"]
+[ext_resource type="AudioStream" uid="uid://dti0uihlbyyvs" path="res://assets/audio/hitHurt.mp3" id="6_70d11"]
 
 [sub_resource type="GDScript" id="GDScript_3li8b"]
 script/source = "extends CharacterBody3D
@@ -64,7 +65,7 @@ func _physics_process(delta):
 
 func _on_enemy_body_entered(body):
 	if body.name == \"Player\":
-		$HitHurt.play()
+		$HitHurts.play()
 		print(\"Player dead\")
 		if Global.coin_counter >= Global.highscore:
 			Global.highscore = Global.coin_counter
@@ -92,25 +93,25 @@ uv1_world_triplanar = true
 [sub_resource type="SphereMesh" id="SphereMesh_70d11"]
 material = SubResource("StandardMaterial3D_qu4a1")
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=915145388]
 script = SubResource("GDScript_3li8b")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=820592292]
 transform = Transform3D(1.03105, 0, 0, 0, -0.0121106, 1.03098, 0, -1.03098, -0.0121106, 0, 0.911344, 0)
 shape = SubResource("1")
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=8146009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.911344, 0)
 mesh = SubResource("SphereMesh_70d11")
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=721261106]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_70d11")
 
-[node name="Counter" type="Label" parent="HUD"]
+[node name="Counter" type="Label" parent="HUD" unique_id=1893431387]
 layout_mode = 0
 offset_left = 982.0
 offset_top = 23.0
@@ -123,15 +124,18 @@ theme_override_fonts/font = ExtResource("4_qu4a1")
 theme_override_font_sizes/font_size = 31
 text = "0"
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+[node name="Sprite2D" type="Sprite2D" parent="HUD" unique_id=303506948]
 position = Vector2(925.00006, 44.000004)
 scale = Vector2(0.3561947, 0.35619473)
 texture = ExtResource("5_70d11")
 
-[node name="Joystick" parent="." instance=ExtResource("5_qu4a1")]
+[node name="Joystick" parent="." unique_id=378605630 instance=ExtResource("5_qu4a1")]
 position = Vector2(151, 462)
 
-[node name="SpeedBoostDuration" type="Timer" parent="."]
+[node name="SpeedBoostDuration" type="Timer" parent="." unique_id=277448107]
 wait_time = 3.0
+
+[node name="HitHurts" type="AudioStreamPlayer" parent="." unique_id=1454941482]
+stream = ExtResource("6_70d11")
 
 [connection signal="timeout" from="SpeedBoostDuration" to="." method="_on_speed_boost_duration_timeout"]

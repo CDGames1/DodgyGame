@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	Global.load_highscore()
 	$Menu.show()
 	$SelectGamemode.hide()
 	$MainMenu.play()
@@ -32,13 +33,15 @@ func _on_mobile_toggled(toggled_on):
 func _on_playCasual_pressed():
 	$BlipSelect.play()
 	Global.gamemode = 1
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	$SelectGamemode.hide()
+	$"Loading Screen".show()
 
 
 func _on_playEndless_pressed():
 	$BlipSelect.play()
 	Global.gamemode = 2
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	$SelectGamemode.hide()
+	$"Loading Screen".show()
 
 
 func _on_backfromGamemode_pressed():

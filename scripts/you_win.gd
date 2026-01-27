@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	Global.load_highscore()
 	$Counter.text = str(Global.highscore)
 
 func _on_play_again_pressed():

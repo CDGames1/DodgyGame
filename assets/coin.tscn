@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://qwvymfat11an"]
+[gd_scene format=3 uid="uid://qwvymfat11an"]
 
 [ext_resource type="Script" uid="uid://db2ke6wr06vyl" path="res://scripts/coin.gd" id="1_pivsm"]
 [ext_resource type="Texture2D" uid="uid://btm7i1yroxshs" path="res://assets/coin.png" id="1_y70ne"]
-[ext_resource type="AudioStream" uid="uid://de4qxmq1jgihh" path="res://assets/audio/pickupCoin.wav" id="3_klnt7"]
+[ext_resource type="AudioStream" uid="uid://bd1aj41wq81m5" path="res://assets/audio/pickupCoin.mp3" id="2_klnt7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pivsm"]
 albedo_texture = ExtResource("1_y70ne")
@@ -83,29 +83,27 @@ _data = {
 height = 0.08831787
 radius = 0.5410156
 
-[node name="Coin" type="Area3D"]
+[node name="Coin" type="Area3D" unique_id=722243848]
 script = ExtResource("1_pivsm")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_klnt7")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=936334810]
+stream = ExtResource("2_klnt7")
 bus = &"SFX"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=124371782]
 transform = Transform3D(0.99999994, 0, 0, 0, -2.0960587e-09, -0.99999994, 0, 0.047952235, -4.3711385e-08, 0, 0.29567298, 0)
 mesh = SubResource("CylinderMesh_q4kta")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=549640658]
 transform = Transform3D(-0.99992037, 0.00060507836, -7.2674643e-06, -0.26314428, -0.9999197, 0.024020601, 7.2674643e-06, 5.5233373e-05, 0.99999934, -0.00090658665, -0.10146237, 2.8014183e-06)
 mesh = SubResource("CylinderMesh_q4kta")
 skeleton = NodePath("../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_vnkb4")
-}
-autoplay = "Rotate"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=88583915]
+libraries/ = SubResource("AnimationLibrary_vnkb4")
+autoplay = &"Rotate"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2130738444]
 transform = Transform3D(1, 0, 0, 0, -0.010524122, -0.9999446, 0, 0.9999446, -0.010524122, -0.015919179, 0.2799657, -0.009307347)
 shape = SubResource("CylinderShape3D_pivsm")
 

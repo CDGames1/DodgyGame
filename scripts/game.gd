@@ -3,6 +3,7 @@ extends Node3D
 var max_coins = 7
 
 func _ready():
+	Global.save_highscore()
 	$GameplayMusic.play()
 	Global.coin_counter = 0
 	if Global.gamemode == 1:
@@ -28,8 +29,10 @@ var wave12_started = false
 func _process(delta):
 	if Global.coin_counter >= Global.highscore:
 		Global.highscore = Global.coin_counter
+		Global.save_highscore()
 	if Global.gamemode == 1:
 		if Global.coin_counter == max_coins:
+			Global.save_highscore()
 			get_tree().change_scene_to_file("res://scenes/You Win.tscn")
 	if Global.gamemode == 2:
 		if Global.coin_counter >= 7 and not wave2_started:
