@@ -523,25 +523,25 @@ data = {
 [node name="Coin" type="Node3D" parent="Level" unique_id=428794113]
 
 [node name="Coin" parent="Level/Coin" unique_id=697369931 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -6.701231, 0.31327915, -3.753986)
+transform = Transform3D(0.928, 0, 0, 0, 0.928, 0, 0, 0, 0.928, -6.701231, 0.31327915, -3.753986)
 
 [node name="Coin5" parent="Level/Coin" unique_id=550152327 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -5.4735866, 0.31327915, -5.337288)
+transform = Transform3D(0.928, 0, 0, 0, 0.928, 0, 0, 0, 0.928, -5.4735866, 0.31327915, -5.337288)
 
 [node name="Coin2" parent="Level/Coin" unique_id=320011372 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -1.2642851, 0.31327915, -1.3186651)
+transform = Transform3D(0.928, 0, 0, 0, 0.928, 0, 0, 0, 0.928, -1.2642851, 0.31327915, -1.3186651)
 
 [node name="Coin6" parent="Level/Coin" unique_id=1242742525 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.031183295, 0, 0.66718, 0, 0.6679083, 0, -0.66718, 0, 0.031183295, 5.2492557, 0.31327915, 5.193162)
+transform = Transform3D(0.04332645, 0, 0.926988, 0, 0.928, 0, -0.926988, 0, 0.04332645, 5.2492557, 0.31327915, 5.193162)
 
 [node name="Coin7" parent="Level/Coin" unique_id=388290796 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(-0.66731656, 0, -0.028108912, 0, 0.6679083, 0, 0.028108912, 0, -0.66731656, 8.756789, 0.31327915, 0.73210025)
+transform = Transform3D(-0.9271778, 0, -0.039054923, 0, 0.928, 0, 0.039054923, 0, -0.9271778, 8.756789, 0.31327915, 0.73210025)
 
 [node name="Coin3" parent="Level/Coin" unique_id=758110522 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 5.2299533)
+transform = Transform3D(0.928, 0, 0, 0, 0.928, 0, 0, 0, 0.928, -3.332662, 0.31327915, 5.2299533)
 
 [node name="Coin4" parent="Level/Coin" unique_id=1997906232 instance=ExtResource("4_lbhrr")]
-transform = Transform3D(0.6679083, 0, 0, 0, 0.6679083, 0, 0, 0, 0.6679083, -3.332662, 0.31327915, 8.226852)
+transform = Transform3D(0.928, 0, 0, 0, 0.928, 0, 0, 0, 0.928, -3.332662, 0.31327915, 8.226852)
 
 [node name="Speed Boost" parent="Level" unique_id=300474497 instance=ExtResource("7_u5sy4")]
 transform = Transform3D(2.6225224, 0, 0, 0, 2.6225224, 0, 0, 0, 2.6225224, 6.414337, -0.01085788, 3.1251209)
